@@ -5,10 +5,15 @@ body {
 }
 
 .board {
-  margin: 50px;
-  width: 700px;
-  height: 550px;
+  width: 80vw;
+  height: 600px;
+  padding: 10px;
+  margin: 10px;
   background-color: rgb(235, 80, 153);
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 .row {
   display: flex;
@@ -24,11 +29,10 @@ body {
 }
 
 .cell {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: #dcb0f6;
-  margin: 10px;
   border: 1px solid #103d9b;
 }
 
@@ -37,9 +41,16 @@ body {
   margin: 0 10px;
   padding: 10px;
   font-weight: bold;
+  background-color: lightskyblue;
+  color: black;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 .active-btn {
   background-color: #103d9b;
+}
+.reset-btn {
+  background-color: lightslategray;
 }
 
 .yellow {
