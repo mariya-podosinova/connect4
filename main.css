@@ -1,7 +1,7 @@
 body {
   text-align: center;
-  background-color: #2b0c59;
-  color: #dca6f5;
+  background-color: #e8e0d9;
+  color: #0c090a;
 }
 
 .board {
@@ -9,7 +9,7 @@ body {
   height: 600px;
   padding: 10px;
   margin: 10px;
-  background-color: rgb(235, 80, 153);
+  background-color: #493b2a;
   border: 2px solid black;
   display: flex;
   justify-content: space-evenly;
@@ -32,8 +32,8 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #dcb0f6;
-  border: 1px solid #103d9b;
+  background-color: #e8e0d9;
+  border: 1px solid #0c090a;
 }
 
 .btn {
@@ -41,21 +41,21 @@ body {
   margin: 0 10px;
   padding: 10px;
   font-weight: bold;
-  background-color: lightskyblue;
+  background-color: #e8e0d9;
   color: black;
-  border: 2px solid black;
+  border: 2px solid #0c090a;
   border-radius: 4px;
 }
 .active-btn {
-  background-color: #103d9b;
+  background-color: #593f62;
 }
 .reset-btn {
-  background-color: lightslategray;
+  background-color: #e8e0d9;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #fbac4b;
 }
 .red {
-  background-color: rgb(252, 45, 8);
+  background-color: #ff6978;
 }
