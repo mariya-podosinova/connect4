@@ -19,8 +19,8 @@ function takeTurn(row, column) {
   if (!gameOn) return null;
   if (board[row][column] !== null) return board;
 
-  if (first) board[row][column] = "nought";
-  else board[row][column] = "cross";
+  if (first) board[row][column] = "red";
+  else board[row][column] = "yellow";
 
   first = !first;
   return board;
@@ -49,10 +49,11 @@ function drawBoard(board) {
       if (!board[rowIndex][columnIndex]) {
         continue;
       }
-      document.getElementById(
-        `row-${rowIndex}-column-${columnIndex}`
-      ).innerText =
-        board[rowIndex][columnIndex] === "nought" ? "red" : "yellow";
+      let currentClass =
+        board[rowIndex][columnIndex] === "red" ? "red" : "yellow";
+      document
+        .getElementById(`row-${rowIndex}-column-${columnIndex}`)
+        .classList.add(currentClass);
     }
   }
 }
