@@ -47,6 +47,7 @@ function drawBoard(board) {
       if (!board[rowIndex][columnIndex]) {
         continue;
       }
+      let lastNullInColumn = console.log(lastNullInColumn);
       let currentClass =
         board[rowIndex][columnIndex] === "red" ? "red" : "yellow";
       document
