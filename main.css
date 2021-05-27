@@ -8,6 +8,7 @@ body {
 
 input {
   margin: 15px;
+  padding: 10px;
 }
 .board {
   width: 80vw;
