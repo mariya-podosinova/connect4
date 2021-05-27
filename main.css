@@ -5,14 +5,14 @@ body {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 }
-label {
+
+input {
   margin: 15px;
 }
 .board {
   width: 80vw;
   height: 600px;
   padding: 10px;
-  margin: 30px;
   background-color: #077187;
   border: 2px solid black;
   display: flex;
@@ -30,6 +30,9 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.wrapper-names {
+  margin: 0 0 50px;
 }
 .game-title {
   font-size: 50px;
@@ -68,6 +71,7 @@ label {
   color: black;
   border: 2px solid #0c090a;
   border-radius: 4px;
+  opacity: 0.8;
 }
 .submit-btn {
   display: block;
@@ -75,9 +79,11 @@ label {
 }
 .active-btn {
   background-color: #8d6b94;
+  background-image: url("image/bg-active.PNG");
 }
 .reset-btn {
   background-color: #e8e0d9;
+  background-image: url("image/bg-reset.PNG");
 }
 
 .yellow {
