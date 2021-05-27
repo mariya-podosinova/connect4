@@ -10,7 +10,24 @@
   </head>
   <body>
     <div class="wrapper">
-      <h2>Connect 4 GAME</h2>
+      <header class="game-title">Connect 4 GAME</header>
+      <form id="add-players" onsubmit="addPlayers(event);">
+        <legend>Add players' names:</legend>
+        <br />
+        <label for="player1">Player 1</label>
+        <input id="player1" type="text" name="player1" />
+
+        <label for="player2">Player 2</label>
+        <input id="player2" type="text" name="player2" />
+        <br />
+        <input
+          id="submit-btn"
+          type="submit"
+          value="Start"
+          class="submit-btn btn"
+        />
+      </form>
+
       <div class="board">
         <div class="row" id="row-0" onClick="handleClick()">
           <div class="cell" id="row-0-column-0"></div>
@@ -73,6 +90,12 @@
         </button>
         <button type="reset" class="btn reset-btn">Reset</button>
         <button type="reset" class="btn player2-btn">Player 2</button>
+      </div>
+      <div class="score" id="score-display">
+        <header class="score-title">Current score</header>
+        <span class="score-result" id="score-result-player1">0</span>
+        <span class="score-dash">-</span>
+        <span class="score-result" id="score-result-player2">0</span>
       </div>
     </div>
     <script src="script.js"></script>

@@ -2,14 +2,18 @@ body {
   text-align: center;
   background-color: #e8e0d9;
   color: #0c090a;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
 }
-
+label {
+  margin: 15px;
+}
 .board {
   width: 80vw;
   height: 600px;
   padding: 10px;
-  margin: 10px;
-  background-color: #493b2a;
+  margin: 30px;
+  background-color: #077187;
   border: 2px solid black;
   display: flex;
   justify-content: space-evenly;
@@ -27,27 +31,50 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+.game-title {
+  font-size: 50px;
+}
 .cell {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
   background-color: #e8e0d9;
+  border-radius: 50%;
   border: 1px solid #0c090a;
 }
-
+.score {
+  color: #336699;
+  display: none;
+}
+.score-title {
+  margin: 10px;
+  font-size: 50px;
+}
+.score-result {
+  padding: 20px;
+  font-size: 80px;
+}
+.score-dash {
+  margin: 0 50px;
+  font-size: 50px;
+}
 .btn {
-  width: 100px;
-  margin: 0 10px;
+  width: 120px;
+  margin: 20px 10px;
   padding: 10px;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
+  font-size: 18px;
   background-color: #e8e0d9;
   color: black;
   border: 2px solid #0c090a;
   border-radius: 4px;
 }
+.submit-btn {
+  display: block;
+  margin: 20px auto;
+}
 .active-btn {
-  background-color: #593f62;
+  background-color: #8d6b94;
 }
 .reset-btn {
   background-color: #e8e0d9;
