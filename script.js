@@ -1,5 +1,7 @@
-const player1_btn = document.querySelector(".player1-btn");
-const player2_btn = document.querySelector(".player2-btn");
+const player1Btn = document.querySelector(".player1-btn");
+const player2Btn = document.querySelector(".player2-btn");
+const scoreDisplay = document.getElementById("score-display");
+const submitBtn = document.getElementById("submit-btn");
 
 let board = [
   [null, null, null, null, null, null, null],
@@ -19,15 +21,11 @@ function takeTurn(row, column) {
   if (!gameOn) return null;
   if (board[row][column] !== null) return board;
 
-  if (first) board[row][column] = "nought";
-  else board[row][column] = "cross";
+  if (first) board[row][column] = "red";
+  else board[row][column] = "yellow";
 
   first = !first;
   return board;
-}
-function handleClick() {
-  player1_btn.classList.toggle("active-btn");
-  player2_btn.classList.toggle("active-btn");
 }
 
 // Clear down the elements drawn on the board.
@@ -49,10 +47,11 @@ function drawBoard(board) {
       if (!board[rowIndex][columnIndex]) {
         continue;
       }
-      document.getElementById(
-        `row-${rowIndex}-column-${columnIndex}`
-      ).innerText =
-        board[rowIndex][columnIndex] === "nought" ? "red" : "yellow";
+      let currentClass =
+        board[rowIndex][columnIndex] === "red" ? "red" : "yellow";
+      document
+        .getElementById(`row-${rowIndex}-column-${columnIndex}`)
+        .classList.add(currentClass);
     }
   }
 }
@@ -86,4 +85,20 @@ for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
       positionClick.bind(null, rowIndex, columnIndex)
     );
   }
+}
+
+//Extras
+function handleClick() {
+  player1Btn.classList.toggle("active-btn");
+  player2Btn.classList.toggle("active-btn");
+}
+
+function addPlayers(ev) {
+  ev.preventDefault();
+  const player1Name = document.getElementById("player1").value;
+  const player2Name = document.getElementById("player2").value;
+  player1Btn.innerText = player1Name || "Connect";
+  player2Btn.innerText = player2Name || "4";
+  submitBtn.style.display = "none";
+  scoreDisplay.style.display = "block";
 }
