@@ -7,14 +7,10 @@ let board = [
   ["red", "red", "red", "red", null, null, null],
 ];
 
-for (let i in board[i][0]) {
-  let allFirst = [];
-  if (board[i][0] !== null) {
-    allFirst.push(board[i][0]);
+for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
+  for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
+    if (board[rowIndex][columnIndex]) {
+      console.log(board[rowIndex][columnIndex]);
+    }
   }
-  console.log(board[i][0]);
-  // console.log(allFirst)
 }
-// let allFirst = []
-// let lastNullInColumn
-// console.log(lastNullInColumn)

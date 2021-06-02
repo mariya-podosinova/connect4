@@ -30,6 +30,7 @@ function takeTurn(row, column) {
 
 // Clear down the elements drawn on the board.
 function clearBoard() {
+  console.log("clearBoard was called ");
   for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
     for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
       document.getElementById(
@@ -41,36 +42,39 @@ function clearBoard() {
 
 // Populate the grid with images based on the board state.
 function drawBoard(board) {
+  console.log("drawBoard was called ", board);
   clearBoard();
   for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
     for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
       if (!board[rowIndex][columnIndex]) {
         continue;
       }
-      let lastNullInColumn = console.log(lastNullInColumn);
+
       let currentClass =
         board[rowIndex][columnIndex] === "red" ? "red" : "yellow";
       document
-        .getElementById(`row-${rowIndex}-column-${columnIndex}`)
+        .getElementById(
+          `row-${dropToBottom(rowIndex, columnIndex)}-column-${columnIndex}`
+        )
         .classList.add(currentClass);
     }
   }
 }
-// function isValidRowOrColumn(array) {
-//   return Array.isArray(array) && array.length === 6;
-// }
-
-// function isValidColumn(columnArray) {
-//   return isValidRowOrColumn(columnArray) && columnArray.every(function (item) { return ["nought", "cross", null].includes(item); });
-// }
 
 // A grid position was clicked call the game's turn function, redraw and then check for a winner.
 function positionClick(rowIndex, columnIndex, event) {
-  takeTurn(rowIndex, columnIndex);
+  console.log(
+    "positionClick was called  with row: " +
+      rowIndex +
+      ", column:" +
+      columnIndex
+  );
+  takeTurn(dropToBottom(rowIndex, columnIndex), columnIndex);
   const board = getBoard();
 
   drawBoard(board);
 }
+
 function getBoard() {
   return board;
 }
@@ -81,10 +85,18 @@ for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
     const gridPosition = document.getElementById(
       `row-${rowIndex}-column-${columnIndex}`
     );
+
     gridPosition.addEventListener(
       "click",
       positionClick.bind(null, rowIndex, columnIndex)
     );
+    gridPosition.addEventListener("click", () => {
+      console.log(
+        "clicked " + rowIndex,
+        columnIndex,
+        " dropTobottom " + dropToBottom(rowIndex, columnIndex)
+      );
+    });
   }
 }
 
@@ -102,4 +114,13 @@ function addPlayers(ev) {
   player2Btn.innerText = player2Name || "4";
   submitBtn.style.display = "none";
   scoreDisplay.style.display = "block";
+}
+//
+function dropToBottom(x_pos, y_pos) {
+  for (let x = 5; x > x_pos; x--) {
+    if (typeof board[x][y_pos] !== "string") {
+      return x;
+    }
+  }
+  return x_pos;
 }
