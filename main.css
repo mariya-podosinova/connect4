@@ -100,3 +100,9 @@ input {
 .red {
   background-color: #ff6978;
 }
+
+#winner-display {
+  display: none;
+  background-color: red;
+  color: white;
+}
