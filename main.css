@@ -33,7 +33,7 @@ input {
   align-items: center;
 }
 .wrapper-names {
-  margin: 0 0 50px;
+  margin: 0 0 10px;
 }
 .game-title {
   font-size: 50px;
@@ -45,6 +45,10 @@ input {
   border-radius: 50%;
   border: 1px solid #0c090a;
 }
+.winner-display-block {
+  padding: 5px;
+}
+
 .score {
   color: #336699;
   display: none;
@@ -99,4 +103,9 @@ input {
 }
 .red {
   background-color: #ff6978;
+}
+
+#winner-display {
+  display: none;
+  color: white;
 }

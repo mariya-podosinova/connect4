@@ -11,6 +11,9 @@
   <body>
     <div class="wrapper">
       <header class="game-title">Connect 4 GAME</header>
+      <p id="winner-display" class="winner-display-block">
+        The winner is <span id="winner-name"></span>
+      </p>
       <div class="wrapper-names">
         <form id="add-players" onsubmit="addPlayers(event);">
           <legend>Add players' names:</legend>
@@ -20,6 +23,8 @@
 
           <label for="player2">Player 2</label>
           <input id="player2" type="text" name="player2" />
+          <br />
+
           <br />
           <input
             id="submit-btn"
@@ -85,6 +90,7 @@
           <div class="cell" id="row-5-column-6"></div>
         </div>
       </div>
+
       <div class="button-wrapper">
         <button type="reset" class="btn player1-btn active-btn">
           Player 1
@@ -99,6 +105,7 @@
         <span class="score-result" id="score-result-player2">0</span>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
+    <script src="connectors.js" type="text/javascript"></script>
   </body>
 </html>
