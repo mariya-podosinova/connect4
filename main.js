@@ -2,6 +2,7 @@ const player1Btn = document.querySelector(".player1-btn");
 const player2Btn = document.querySelector(".player2-btn");
 const scoreDisplay = document.getElementById("score-display");
 const submitBtn = document.getElementById("submit-btn");
+const players = document.getElementById("add-players");
 
 let board = [
   [null, null, null, null, null, null, null],
@@ -67,6 +68,7 @@ function resetGame() {
 // // The reset button was clicked, call the game's reset function then reset the DOM.
 function resetClick(event) {
   resetGame();
+  clearBoard();
   const winnerName = document.getElementById("winner-name");
   winnerName.innerText = "";
   const winnerDisplay = document.getElementById("winner-display");
@@ -88,6 +90,7 @@ function addPlayers(ev) {
   player1Btn.innerText = player1Name || "Connect";
   player2Btn.innerText = player2Name || "4";
   submitBtn.style.display = "none";
+  players.style.display = "none";
   scoreDisplay.style.display = "block";
 }
 //Helper functions

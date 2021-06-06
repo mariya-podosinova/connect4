@@ -45,6 +45,10 @@ input {
   border-radius: 50%;
   border: 1px solid #0c090a;
 }
+.winner-display-block {
+  padding: 5px;
+}
+
 .score {
   color: #336699;
   display: none;
@@ -103,6 +107,5 @@ input {
 
 #winner-display {
   display: none;
-  background-color: red;
   color: white;
 }

@@ -1,3 +1,6 @@
+const winnerName = document.getElementById("winner-name");
+const winnerDisplay = document.getElementById("winner-display");
+
 // A grid position was clicked call the game's turn function, redraw and then check for a winner.
 function positionClick(rowIndex, columnIndex, event) {
   console.log(
@@ -22,10 +25,10 @@ function positionClick(rowIndex, columnIndex, event) {
         winner
       );
     }
-    const winnerName = document.getElementById("winner-name");
+
     winnerName.innerText = winner;
-    const winnerDisplay = document.getElementById("winner-display");
     winnerDisplay.style.display = "block";
+    winnerDisplay.classList.add(winner);
   }
 }
 
@@ -47,9 +50,16 @@ function clearBoard() {
   console.log("clearBoard was called ");
   for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
     for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
-      document.getElementById(
-        `row-${rowIndex}-column-${columnIndex}`
-      ).innerHTML = "";
+      let currentClass1 =
+        board[rowIndex][columnIndex] === "yellow" ? "yellow" : "red";
+      let currentClass2 =
+        board[rowIndex][columnIndex] === "red" ? "red" : "yellow";
+      document
+        .getElementById(`row-${rowIndex}-column-${columnIndex}`)
+        .classList.remove(currentClass1);
+      document
+        .getElementById(`row-${rowIndex}-column-${columnIndex}`)
+        .classList.remove(currentClass2);
     }
   }
 }
