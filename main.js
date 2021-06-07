@@ -37,7 +37,7 @@ function checkWinner() {
   // const numTurns = boardToArray.filter((el) => el !== null).length;
   // if (numTurns > 4) {
   horizontalChecking();
-  // verticalChecking();
+  verticalChecking();
   // diagonalChecking();
   console.log(winner);
   // }
@@ -69,10 +69,13 @@ function resetGame() {
 function resetClick(event) {
   resetGame();
   clearBoard();
+
   const winnerName = document.getElementById("winner-name");
   winnerName.innerText = "";
   const winnerDisplay = document.getElementById("winner-display");
   winnerDisplay.style.display = "None";
+  winnerDisplay.classList.remove("red");
+  winnerDisplay.classList.remove("yellow");
 }
 // Bind the click event for the reset button.
 const resetButton = document.querySelector(".reset-btn");
@@ -127,7 +130,26 @@ function getBoard() {
   console.log("getBoard was called", board);
   return board;
 }
+//Vertical
+const verticalChecking = () => {
+  board.forEach((row, i) => {
+    const columnArr = [
+      board[0][i],
+      board[1][i],
+      board[2][i],
+      board[3][i],
+      board[4][i],
+      board[5][i],
+    ];
+    const red = columnArr.filter((col) => col === "red");
+    const yellow = columnArr.filter((col) => col === "yellow");
 
+    if (checkForWinner(red, yellow)) {
+      winner = checkForWinner(red, yellow);
+    }
+  });
+  return winner;
+};
 if (typeof exports === "object") {
   console.log("Running in Node");
   // Node. Does not work with strict CommonJS, but only CommonJS-like

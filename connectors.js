@@ -48,18 +48,15 @@ for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
 // Clear down the elements drawn on the board.
 function clearBoard() {
   console.log("clearBoard was called ");
+
   for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
     for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
-      let currentClass1 =
-        board[rowIndex][columnIndex] === "yellow" ? "yellow" : "red";
-      let currentClass2 =
-        board[rowIndex][columnIndex] === "red" ? "red" : "yellow";
       document
         .getElementById(`row-${rowIndex}-column-${columnIndex}`)
-        .classList.remove(currentClass1);
+        .classList.remove("red");
       document
         .getElementById(`row-${rowIndex}-column-${columnIndex}`)
-        .classList.remove(currentClass2);
+        .classList.remove("yellow");
     }
   }
 }
