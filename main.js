@@ -38,7 +38,7 @@ function checkWinner() {
   // if (numTurns > 4) {
   horizontalChecking();
   verticalChecking();
-  // diagonalChecking();
+  diagonalChecking();
   console.log(winner);
   // }
   // if (numTurns === 9) return "nobody";
@@ -116,9 +116,9 @@ const checkForWinner = (red, yellow) => {
 };
 //Horizontal
 const horizontalChecking = () => {
-  board.forEach((row) => {
-    const red = row.filter((col) => col === "red");
-    const yellow = row.filter((col) => col === "yellow");
+  board.forEach((rowArr) => {
+    const red = rowArr.filter((row) => row === "red");
+    const yellow = rowArr.filter((row) => row === "yellow");
 
     if (checkForWinner(red, yellow)) {
       winner = checkForWinner(red, yellow);
@@ -144,6 +144,38 @@ const verticalChecking = () => {
     const red = columnArr.filter((col) => col === "red");
     const yellow = columnArr.filter((col) => col === "yellow");
 
+    if (checkForWinner(red, yellow)) {
+      winner = checkForWinner(red, yellow);
+    }
+  });
+  return winner;
+};
+//Diagonal
+const diagonalChecking = () => {
+  board.forEach((row, i) => {
+    let diagonalArr = [
+      board[0][0],
+      board[1][1],
+      board[2][2],
+      board[3][3],
+      board[4][4],
+      board[5][5],
+    ];
+    let red = diagonalArr.filter((col) => col === "red");
+    let yellow = diagonalArr.filter((col) => col === "yellow");
+    if (checkForWinner(red, yellow)) {
+      winner = checkForWinner(red, yellow);
+    }
+    diagonalArr = [
+      board[0][5],
+      board[1][4],
+      board[2][3],
+      board[3][2],
+      board[4][1],
+      board[5][0],
+    ];
+    red = diagonalArr.filter((col) => col === "red");
+    yellow = diagonalArr.filter((col) => col === "yellow");
     if (checkForWinner(red, yellow)) {
       winner = checkForWinner(red, yellow);
     }
