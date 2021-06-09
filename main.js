@@ -28,11 +28,7 @@ let winner = null;
 
 let score1 = 0;
 let score2 = 0;
-function handler(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  return false;
-}
+
 function takeTurn(row, column) {
   console.log("takeTurn was called with row: " + row + ", column:" + column);
 
@@ -63,7 +59,7 @@ function checkWinner() {
   }
   if (numTurns === 42) return "nobody";
   if (winner) {
-    mainBoard.addEventListener("click", handler, true);
+    mainBoard.addEventListener("click", DisableClickOnPage, true);
     gameOn = false;
     return winner;
   } else {
@@ -240,6 +236,13 @@ const diagonalChecking = () => {
 
   return winner;
 };
+
+//Helper for stop click
+function DisableClickOnPage(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  return false;
+}
 if (typeof exports === "object") {
   console.log("Running in Node");
   // Node. Does not work with strict CommonJS, but only CommonJS-like
