@@ -36,8 +36,8 @@ function checkWinner() {
   console.log("checkWinner was called");
   // const numTurns = boardToArray.filter((el) => el !== null).length;
   // if (numTurns > 4) {
-  // horizontalChecking();
-  // verticalChecking();
+  horizontalChecking();
+  verticalChecking();
   diagonalChecking();
   console.log(winner);
   // }
