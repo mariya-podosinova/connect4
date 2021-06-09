@@ -1,6 +1,3 @@
-const winnerName = document.getElementById("winner-name");
-const winnerDisplay = document.getElementById("winner-display");
-
 // A grid position was clicked call the game's turn function, redraw and then check for a winner.
 function positionClick(rowIndex, columnIndex, event) {
   console.log(
@@ -28,7 +25,10 @@ function positionClick(rowIndex, columnIndex, event) {
 
     winnerName.innerText = winner;
     winnerDisplay.style.display = "block";
+
     winnerDisplay.classList.add(winner);
+    if (winner === "red") winnerCrown1.style.display = "block";
+    if (winner === "yellow") winnerCrown2.style.display = "block";
   }
 }
 

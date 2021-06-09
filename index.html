@@ -37,7 +37,7 @@
         </form>
       </div>
       <div class="board">
-        <div class="row" id="row-0" onClick="handleClick()">
+        <div class="row" id="row-0">
           <div class="cell" id="row-0-column-0"></div>
           <div class="cell" id="row-0-column-1"></div>
           <div class="cell" id="row-0-column-2"></div>
@@ -46,7 +46,7 @@
           <div class="cell" id="row-0-column-5"></div>
           <div class="cell" id="row-0-column-6"></div>
         </div>
-        <div class="row" id="row-1" onClick="handleClick()">
+        <div class="row" id="row-1">
           <div class="cell" id="row-1-column-0"></div>
           <div class="cell" id="row-1-column-1"></div>
           <div class="cell" id="row-1-column-2"></div>
@@ -55,7 +55,7 @@
           <div class="cell" id="row-1-column-5"></div>
           <div class="cell" id="row-1-column-6"></div>
         </div>
-        <div class="row" id="row-2" onClick="handleClick()">
+        <div class="row" id="row-2">
           <div class="cell" id="row-2-column-0"></div>
           <div class="cell" id="row-2-column-1"></div>
           <div class="cell" id="row-2-column-2"></div>
@@ -64,7 +64,7 @@
           <div class="cell" id="row-2-column-5"></div>
           <div class="cell" id="row-2-column-6"></div>
         </div>
-        <div class="row" id="row-3" onClick="handleClick()">
+        <div class="row" id="row-3">
           <div class="cell" id="row-3-column-0"></div>
           <div class="cell" id="row-3-column-1"></div>
           <div class="cell" id="row-3-column-2"></div>
@@ -73,7 +73,7 @@
           <div class="cell" id="row-3-column-5"></div>
           <div class="cell" id="row-3-column-6"></div>
         </div>
-        <div class="row" id="row-4" onClick="handleClick()">
+        <div class="row" id="row-4">
           <div class="cell" id="row-4-column-0"></div>
           <div class="cell" id="row-4-column-1"></div>
           <div class="cell" id="row-4-column-2"></div>
@@ -82,7 +82,7 @@
           <div class="cell" id="row-4-column-5"></div>
           <div class="cell" id="row-4-column-6"></div>
         </div>
-        <div class="row" id="row-5" onClick="handleClick()">
+        <div class="row" id="row-5">
           <div class="cell" id="row-5-column-0"></div>
           <div class="cell" id="row-5-column-1"></div>
           <div class="cell" id="row-5-column-2"></div>
@@ -94,13 +94,21 @@
       </div>
 
       <div class="button-wrapper">
-        <button type="reset" class="btn player1-btn active-btn">
-          Player 1
-        </button>
+        <img
+          src="https://png.pngtree.com/svg/20170904/the_golden_crown_309708.png"
+          class="winner-img1"
+          id="crown-display"
+        />
+        <button class="btn player1-btn active-btn">Player 1</button>
         <button type="reset" class="btn reset-btn">Play Again</button>
-        <button type="reset" class="btn player2-btn">Player 2</button>
+        <button class="btn player2-btn">Player 2</button>
+        <img
+          src="https://png.pngtree.com/svg/20170904/the_golden_crown_309708.png"
+          class="winner-img2"
+          id="crown-display"
+        />
       </div>
-      <div class="score" id="score-display">
+      <div class="score-section" id="score-display">
         <header class="score-title">Current score</header>
         <span class="score-result" id="score-result-player1">0</span>
         <span class="score-dash">-</span>

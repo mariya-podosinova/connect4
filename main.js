@@ -4,6 +4,12 @@ const scoreDisplay = document.getElementById("score-display");
 const submitBtn = document.getElementById("submit-btn");
 const players = document.getElementById("add-players");
 
+const winnerName = document.getElementById("winner-name");
+const winnerDisplay = document.getElementById("winner-display");
+
+const winnerCrown1 = document.querySelector(".winner-img1");
+const winnerCrown2 = document.querySelector(".winner-img2");
+
 let board = [
   [null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null],
@@ -70,21 +76,18 @@ function resetClick(event) {
   resetGame();
   clearBoard();
 
-  const winnerName = document.getElementById("winner-name");
   winnerName.innerText = "";
-  const winnerDisplay = document.getElementById("winner-display");
+
   winnerDisplay.style.display = "None";
   winnerDisplay.classList.remove("red");
   winnerDisplay.classList.remove("yellow");
+  winnerCrown1.style.display = "None";
+  winnerCrown2.style.display = "None";
 }
 // Bind the click event for the reset button.
 const resetButton = document.querySelector(".reset-btn");
 resetButton.addEventListener("click", resetClick);
 //Extras
-function handleClick() {
-  player1Btn.classList.toggle("active-btn");
-  player2Btn.classList.toggle("active-btn");
-}
 
 function addPlayers(ev) {
   ev.preventDefault();
