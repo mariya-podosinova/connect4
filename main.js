@@ -70,7 +70,7 @@ function checkWinner() {
 // Set the game state back to its original state to play another game.
 function resetGame() {
   console.log("resetGame was called");
-  mainBoard.removeEventListener("click", handler, true);
+  mainBoard.removeEventListener("click", DisableClickOnPage, true);
   gameOn = true;
   winner = null;
 
