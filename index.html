@@ -13,9 +13,7 @@
     <!-- <button id="fetch-data">fetch data</button> -->
     <div class="wrapper">
       <header class="game-title">Connect 4 GAME</header>
-      <p id="winner-display" class="winner-display-block">
-        The winner is <span id="winner-name"></span>
-      </p>
+
       <div class="wrapper-names">
         <form id="add-players" onsubmit="addPlayers(event);">
           <legend>Add players' names:</legend>
@@ -110,10 +108,13 @@
       </div>
       <div class="score-section" id="score-display">
         <header class="score-title">Current score</header>
-        <span class="score-result" id="score-result-player1">0</span>
+        <span class="score-result" id="score-player1">0</span>
         <span class="score-dash">-</span>
-        <span class="score-result" id="score-result-player2">0</span>
+        <span class="score-result" id="score-player2">0</span>
       </div>
+      <p id="winner-display" class="winner-display-block">
+        The winner is <span id="winner-name"></span>
+      </p>
     </div>
     <script src="./server-side/messingAroundFetch.js"></script>
     <script src="main.js"></script>

@@ -3,12 +3,16 @@ const player2Btn = document.querySelector(".player2-btn");
 const scoreDisplay = document.getElementById("score-display");
 const submitBtn = document.getElementById("submit-btn");
 const players = document.getElementById("add-players");
+const mainBoard = document.querySelector(".board");
 
 const winnerName = document.getElementById("winner-name");
 const winnerDisplay = document.getElementById("winner-display");
 
 const winnerCrown1 = document.querySelector(".winner-img1");
 const winnerCrown2 = document.querySelector(".winner-img2");
+
+const player1Score = document.getElementById("score-player1");
+const player2Score = document.getElementById("score-player2");
 
 let board = [
   [null, null, null, null, null, null, null],
@@ -22,10 +26,15 @@ let first = true;
 let gameOn = true;
 let winner = null;
 
+let score1 = 0;
+let score2 = 0;
+
 function takeTurn(row, column) {
   console.log("takeTurn was called with row: " + row + ", column:" + column);
 
-  if (!gameOn) return null;
+  if (!gameOn) {
+    return null;
+  }
   if (board[row][column] !== null) return board;
 
   if (first) board[row][column] = "red";
@@ -37,18 +46,20 @@ function takeTurn(row, column) {
 // Return either "noughts", "crosses" or "nobody" if the game is over.
 // Otherwise return null to continue playing.
 function checkWinner() {
-  // const boardToArray = board.flat();
+  const boardToArray = board.flat();
 
   console.log("checkWinner was called");
-  // const numTurns = boardToArray.filter((el) => el !== null).length;
-  // if (numTurns > 4) {
-  horizontalChecking();
-  verticalChecking();
-  diagonalChecking();
-  console.log(winner);
-  // }
-  // if (numTurns === 9) return "nobody";
+  const numTurns = boardToArray.filter((el) => el !== null).length;
+  if (numTurns >= 7) {
+    horizontalChecking();
+    verticalChecking();
+    diagonalChecking();
+    console.log(winner);
+    updateScore();
+  }
+  if (numTurns === 42) return "nobody";
   if (winner) {
+    mainBoard.addEventListener("click", DisableClickOnPage, true);
     gameOn = false;
     return winner;
   } else {
@@ -59,8 +70,10 @@ function checkWinner() {
 // Set the game state back to its original state to play another game.
 function resetGame() {
   console.log("resetGame was called");
+  mainBoard.removeEventListener("click", handler, true);
   gameOn = true;
   winner = null;
+
   board = [
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
@@ -98,6 +111,12 @@ function addPlayers(ev) {
   submitBtn.style.display = "none";
   players.style.display = "none";
   scoreDisplay.style.display = "block";
+}
+function updateScore() {
+  winner === "red" ? score1++ : score2++;
+  console.log("updateScore was called", score1, score2);
+  player1Score.innerText = score1;
+  player2Score.innerText = score2;
 }
 //Helper functions
 function dropToBottom(row_pos, column_pos) {
@@ -217,6 +236,13 @@ const diagonalChecking = () => {
 
   return winner;
 };
+
+//Helper for stop click
+function DisableClickOnPage(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  return false;
+}
 if (typeof exports === "object") {
   console.log("Running in Node");
   // Node. Does not work with strict CommonJS, but only CommonJS-like
@@ -227,6 +253,7 @@ if (typeof exports === "object") {
     resetGame,
     takeTurn,
     getBoard,
+    updateScore,
   };
 } else {
   console.log("Running in Browser");

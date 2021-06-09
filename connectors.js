@@ -12,6 +12,7 @@ function positionClick(rowIndex, columnIndex, event) {
   drawBoard(board);
 
   const winner = checkWinner();
+
   if (winner) {
     if (
       typeof winner !== "string" ||
@@ -28,6 +29,7 @@ function positionClick(rowIndex, columnIndex, event) {
 
     winnerDisplay.classList.add(winner);
     if (winner === "red") winnerCrown1.style.display = "block";
+
     if (winner === "yellow") winnerCrown2.style.display = "block";
   }
 }
@@ -90,7 +92,6 @@ if (typeof exports === "object") {
     positionClick,
     drawBoard,
     clearBoard,
-    resetClick,
   };
 } else {
   console.log("Running in Browser");
