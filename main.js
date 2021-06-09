@@ -88,10 +88,6 @@ function resetClick(event) {
 const resetButton = document.querySelector(".reset-btn");
 resetButton.addEventListener("click", resetClick);
 //Extras
-function handleClick() {
-  player1Btn.classList.toggle("active-btn");
-  player2Btn.classList.toggle("active-btn");
-}
 
 function addPlayers(ev) {
   ev.preventDefault();
