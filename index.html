@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" />
+    <link rel="shortcut icon" href="#" />
 
     <title>Connect4</title>
   </head>
   <body>
+    <!-- <button id="fetch-data">fetch data</button> -->
     <div class="wrapper">
       <header class="game-title">Connect 4 GAME</header>
       <p id="winner-display" class="winner-display-block">
@@ -95,7 +97,7 @@
         <button type="reset" class="btn player1-btn active-btn">
           Player 1
         </button>
-        <button type="reset" class="btn reset-btn">Reset</button>
+        <button type="reset" class="btn reset-btn">Play Again</button>
         <button type="reset" class="btn player2-btn">Player 2</button>
       </div>
       <div class="score" id="score-display">
@@ -105,6 +107,7 @@
         <span class="score-result" id="score-result-player2">0</span>
       </div>
     </div>
+    <script src="./server-side/messingAroundFetch.js"></script>
     <script src="main.js"></script>
     <script src="connectors.js" type="text/javascript"></script>
   </body>

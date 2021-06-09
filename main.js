@@ -37,8 +37,8 @@ function checkWinner() {
   // const numTurns = boardToArray.filter((el) => el !== null).length;
   // if (numTurns > 4) {
   horizontalChecking();
-  // verticalChecking();
-  // diagonalChecking();
+  verticalChecking();
+  diagonalChecking();
   console.log(winner);
   // }
   // if (numTurns === 9) return "nobody";
@@ -69,10 +69,13 @@ function resetGame() {
 function resetClick(event) {
   resetGame();
   clearBoard();
+
   const winnerName = document.getElementById("winner-name");
   winnerName.innerText = "";
   const winnerDisplay = document.getElementById("winner-display");
   winnerDisplay.style.display = "None";
+  winnerDisplay.classList.remove("red");
+  winnerDisplay.classList.remove("yellow");
 }
 // Bind the click event for the reset button.
 const resetButton = document.querySelector(".reset-btn");
@@ -113,9 +116,9 @@ const checkForWinner = (red, yellow) => {
 };
 //Horizontal
 const horizontalChecking = () => {
-  board.forEach((row) => {
-    const red = row.filter((col) => col === "red");
-    const yellow = row.filter((col) => col === "yellow");
+  board.forEach((rowArr) => {
+    const red = rowArr.filter((row) => row === "red");
+    const yellow = rowArr.filter((row) => row === "yellow");
 
     if (checkForWinner(red, yellow)) {
       winner = checkForWinner(red, yellow);
@@ -127,7 +130,90 @@ function getBoard() {
   console.log("getBoard was called", board);
   return board;
 }
+//Vertical
+const verticalChecking = () => {
+  board.forEach((row, i) => {
+    const columnArr = [
+      board[0][i],
+      board[1][i],
+      board[2][i],
+      board[3][i],
+      board[4][i],
+      board[5][i],
+    ];
+    const red = columnArr.filter((col) => col === "red");
+    const yellow = columnArr.filter((col) => col === "yellow");
 
+    if (checkForWinner(red, yellow)) {
+      winner = checkForWinner(red, yellow);
+    }
+  });
+  return winner;
+};
+//Diagonal
+const diagonalChecking = () => {
+  board.forEach((row, i) => {
+    if (i !== 1 && i !== 2 && i !== 3 && i !== 4) {
+      let j = 5 - i;
+
+      const diagonalArr = [
+        board[5][j],
+        board[4][Math.abs(i - 4)],
+        board[3][Math.abs(i - 3)],
+        board[2][Math.abs(i - 2)],
+        board[1][Math.abs(i - 1)],
+        board[0][5 - j],
+      ];
+      console.log(diagonalArr);
+      let red = diagonalArr.filter((col) => col === "red");
+      let yellow = diagonalArr.filter((col) => col === "yellow");
+
+      if (checkForWinner(red, yellow)) {
+        winner = checkForWinner(red, yellow);
+      }
+    }
+  });
+  board.forEach((row, i) => {
+    if (i !== 1 && i !== 2 && i !== 3 && i !== 4) {
+      let j = 6 - i;
+
+      const diagonalArr = [
+        board[5][j],
+        board[4][1 + Math.abs(i - 4)],
+        board[3][1 + Math.abs(i - 3)],
+        board[2][1 + Math.abs(i - 2)],
+        board[1][1 + Math.abs(i - 1)],
+        board[0][7 - j],
+      ];
+      console.log(diagonalArr);
+      let red = diagonalArr.filter((col) => col === "red");
+      let yellow = diagonalArr.filter((col) => col === "yellow");
+
+      if (checkForWinner(red, yellow)) {
+        winner = checkForWinner(red, yellow);
+      }
+    }
+  });
+
+  let diagonalArr = [board[5][3], board[4][2], board[3][1], board[2][0]];
+  console.log(diagonalArr);
+  let red = diagonalArr.filter((col) => col === "red");
+  let yellow = diagonalArr.filter((col) => col === "yellow");
+
+  if (checkForWinner(red, yellow)) {
+    winner = checkForWinner(red, yellow);
+  }
+  diagonalArr = [board[5][3], board[4][4], board[3][5], board[2][6]];
+  console.log(diagonalArr);
+  red = diagonalArr.filter((col) => col === "red");
+  yellow = diagonalArr.filter((col) => col === "yellow");
+
+  if (checkForWinner(red, yellow)) {
+    winner = checkForWinner(red, yellow);
+  }
+
+  return winner;
+};
 if (typeof exports === "object") {
   console.log("Running in Node");
   // Node. Does not work with strict CommonJS, but only CommonJS-like
