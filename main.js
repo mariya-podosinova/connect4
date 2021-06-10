@@ -32,9 +32,7 @@ let score2 = 0;
 function takeTurn(row, column) {
   console.log("takeTurn was called with row: " + row + ", column:" + column);
 
-  if (!gameOn) {
-    return null;
-  }
+  if (!gameOn) return null;
   if (board[row][column] !== null) return board;
 
   if (first) board[row][column] = "red";
@@ -47,18 +45,16 @@ function takeTurn(row, column) {
 // Otherwise return null to continue playing.
 function checkWinner() {
   const boardToArray = board.flat();
-
   console.log("checkWinner was called");
   const numTurns = boardToArray.filter((el) => el !== null).length;
-  if (numTurns >= 7) {
-    horizontalChecking();
-    verticalChecking();
-    diagonalChecking();
-    console.log(winner);
-    updateScore();
-  }
+  horizontalChecking();
+  verticalChecking();
+  diagonalChecking();
+  console.log(winner);
+
   if (numTurns === 42) return "nobody";
   if (winner) {
+    updateScore();
     mainBoard.addEventListener("click", DisableClickOnPage, true);
     gameOn = false;
     return winner;
@@ -90,7 +86,6 @@ function resetClick(event) {
   clearBoard();
 
   winnerName.innerText = "";
-
   winnerDisplay.style.display = "None";
   winnerDisplay.classList.remove("red");
   winnerDisplay.classList.remove("yellow");
@@ -141,10 +136,7 @@ const horizontalChecking = () => {
   board.forEach((rowArr) => {
     const red = rowArr.filter((row) => row === "red");
     const yellow = rowArr.filter((row) => row === "yellow");
-
-    if (checkForWinner(red, yellow)) {
-      winner = checkForWinner(red, yellow);
-    }
+    if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
   });
   return winner;
 };
@@ -165,10 +157,7 @@ const verticalChecking = () => {
     ];
     const red = columnArr.filter((col) => col === "red");
     const yellow = columnArr.filter((col) => col === "yellow");
-
-    if (checkForWinner(red, yellow)) {
-      winner = checkForWinner(red, yellow);
-    }
+    if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
   });
   return winner;
 };
@@ -177,7 +166,6 @@ const diagonalChecking = () => {
   board.forEach((row, i) => {
     if (i !== 1 && i !== 2 && i !== 3 && i !== 4) {
       let j = 5 - i;
-
       const diagonalArr = [
         board[5][j],
         board[4][Math.abs(i - 4)],
@@ -186,19 +174,14 @@ const diagonalChecking = () => {
         board[1][Math.abs(i - 1)],
         board[0][5 - j],
       ];
-      console.log(diagonalArr);
       let red = diagonalArr.filter((col) => col === "red");
       let yellow = diagonalArr.filter((col) => col === "yellow");
-
-      if (checkForWinner(red, yellow)) {
-        winner = checkForWinner(red, yellow);
-      }
+      if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
     }
   });
   board.forEach((row, i) => {
     if (i !== 1 && i !== 2 && i !== 3 && i !== 4) {
       let j = 6 - i;
-
       const diagonalArr = [
         board[5][j],
         board[4][1 + Math.abs(i - 4)],
@@ -207,34 +190,43 @@ const diagonalChecking = () => {
         board[1][1 + Math.abs(i - 1)],
         board[0][7 - j],
       ];
-      console.log(diagonalArr);
       let red = diagonalArr.filter((col) => col === "red");
       let yellow = diagonalArr.filter((col) => col === "yellow");
-
-      if (checkForWinner(red, yellow)) {
-        winner = checkForWinner(red, yellow);
-      }
+      if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
     }
   });
 
   let diagonalArr = [board[5][3], board[4][2], board[3][1], board[2][0]];
-  console.log(diagonalArr);
   let red = diagonalArr.filter((col) => col === "red");
   let yellow = diagonalArr.filter((col) => col === "yellow");
+  if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
 
-  if (checkForWinner(red, yellow)) {
-    winner = checkForWinner(red, yellow);
-  }
   diagonalArr = [board[5][3], board[4][4], board[3][5], board[2][6]];
-  console.log(diagonalArr);
   red = diagonalArr.filter((col) => col === "red");
   yellow = diagonalArr.filter((col) => col === "yellow");
+  if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
 
-  if (checkForWinner(red, yellow)) {
-    winner = checkForWinner(red, yellow);
-  }
+  diagonalArr = [
+    board[5][4],
+    board[4][3],
+    board[3][2],
+    board[2][1],
+    board[1][0],
+  ];
+  red = diagonalArr.filter((col) => col === "red");
+  yellow = diagonalArr.filter((col) => col === "yellow");
+  if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
 
-  return winner;
+  diagonalArr = [
+    board[5][2],
+    board[4][3],
+    board[3][4],
+    board[2][5],
+    board[1][6],
+  ];
+  red = diagonalArr.filter((col) => col === "red");
+  yellow = diagonalArr.filter((col) => col === "yellow");
+  if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
 };
 
 //Helper for stop click

@@ -8,9 +8,7 @@ function positionClick(rowIndex, columnIndex, event) {
   );
   takeTurn(dropToBottom(rowIndex, columnIndex), columnIndex);
   const board = getBoard();
-
   drawBoard(board);
-
   const winner = checkWinner();
 
   if (winner) {
@@ -26,10 +24,8 @@ function positionClick(rowIndex, columnIndex, event) {
 
     winnerName.innerText = winner;
     winnerDisplay.style.display = "block";
-
     winnerDisplay.classList.add(winner);
     if (winner === "red") winnerCrown1.style.display = "block";
-
     if (winner === "yellow") winnerCrown2.style.display = "block";
   }
 }
