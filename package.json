@@ -1,0 +1,21 @@
+{
+  "name": "Connect4",
+  "version": "1.0.0",
+  "description": "A game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.",
+  "main": "academy.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "npx jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-plugin-react": "^7.24.0",
+    "jest": "^27.0.4"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^8.3.0"
+  }
+}

@@ -1,5 +1,11 @@
 // A grid position was clicked call the game's turn function, redraw and then check for a winner.
 function positionClick(rowIndex, columnIndex, event) {
+  const resetButton = document.querySelector(".reset-btn");
+  resetButton.addEventListener("click", resetClick);
+  const winnerName = document.getElementById("winner-name");
+  const winnerDisplay = document.getElementById("winner-display");
+  const winnerCrown1 = document.querySelector(".winner-img1");
+  const winnerCrown2 = document.querySelector(".winner-img2");
   console.log(
     "positionClick was called  with row: " +
       rowIndex +
@@ -21,7 +27,6 @@ function positionClick(rowIndex, columnIndex, event) {
         winner
       );
     }
-
     winnerName.innerText = winner;
     winnerDisplay.style.display = "block";
     winnerDisplay.classList.add(winner);
