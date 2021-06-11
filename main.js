@@ -1,19 +1,3 @@
-const player1Btn = document.querySelector(".player1-btn");
-const player2Btn = document.querySelector(".player2-btn");
-const scoreDisplay = document.getElementById("score-display");
-const submitBtn = document.getElementById("submit-btn");
-const players = document.getElementById("add-players");
-const mainBoard = document.querySelector(".board");
-
-const winnerName = document.getElementById("winner-name");
-const winnerDisplay = document.getElementById("winner-display");
-
-const winnerCrown1 = document.querySelector(".winner-img1");
-const winnerCrown2 = document.querySelector(".winner-img2");
-
-const player1Score = document.getElementById("score-player1");
-const player2Score = document.getElementById("score-player2");
-
 let board = [
   [null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null],
@@ -46,6 +30,7 @@ function takeTurn(row, column) {
 function checkWinner() {
   const boardToArray = board.flat();
   console.log("checkWinner was called");
+
   const numTurns = boardToArray.filter((el) => el !== null).length;
   horizontalChecking();
   verticalChecking();
@@ -55,6 +40,7 @@ function checkWinner() {
   if (numTurns === 42) return "nobody";
   if (winner) {
     updateScore();
+    const mainBoard = document.querySelector(".board");
     mainBoard.addEventListener("click", DisableClickOnPage, true);
     gameOn = false;
     return winner;
@@ -66,6 +52,7 @@ function checkWinner() {
 // Set the game state back to its original state to play another game.
 function resetGame() {
   console.log("resetGame was called");
+  const mainBoard = document.querySelector(".board");
   mainBoard.removeEventListener("click", DisableClickOnPage, true);
   gameOn = true;
   winner = null;
@@ -82,6 +69,10 @@ function resetGame() {
 }
 // // The reset button was clicked, call the game's reset function then reset the DOM.
 function resetClick(event) {
+  const winnerName = document.getElementById("winner-name");
+  const winnerDisplay = document.getElementById("winner-display");
+  const winnerCrown1 = document.querySelector(".winner-img1");
+  const winnerCrown2 = document.querySelector(".winner-img2");
   resetGame();
   clearBoard();
 
@@ -93,11 +84,15 @@ function resetClick(event) {
   winnerCrown2.style.display = "None";
 }
 // Bind the click event for the reset button.
-const resetButton = document.querySelector(".reset-btn");
-resetButton.addEventListener("click", resetClick);
+
 //Extras
 
 function addPlayers(ev) {
+  const submitBtn = document.getElementById("submit-btn");
+  const player1Btn = document.querySelector(".player1-btn");
+  const player2Btn = document.querySelector(".player2-btn");
+  const players = document.getElementById("add-players");
+  const scoreDisplay = document.getElementById("score-display");
   ev.preventDefault();
   const player1Name = document.getElementById("player1").value;
   const player2Name = document.getElementById("player2").value;
@@ -108,6 +103,9 @@ function addPlayers(ev) {
   scoreDisplay.style.display = "block";
 }
 function updateScore() {
+  const player1Score = document.getElementById("score-player1");
+  const player2Score = document.getElementById("score-player2");
+
   winner === "red" ? score1++ : score2++;
   console.log("updateScore was called", score1, score2);
   player1Score.innerText = score1;
@@ -241,6 +239,7 @@ if (typeof exports === "object") {
   // environments that support module.exports, like Node.
   // eslint-disable-next-line no-undef
   module.exports = {
+    horizontalChecking,
     checkWinner,
     resetGame,
     takeTurn,
@@ -249,4 +248,5 @@ if (typeof exports === "object") {
   };
 } else {
   console.log("Running in Browser");
+  // initialiseGame();
 }
