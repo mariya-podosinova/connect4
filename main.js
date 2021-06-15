@@ -121,10 +121,10 @@ function dropToBottom(row_pos, column_pos) {
   return row_pos;
 }
 const checkForWinner = (red, yellow) => {
-  if (red.length === 4) {
+  if (red.includes("red red red red")) {
     return "red";
   }
-  if (yellow.length === 4) {
+  if (yellow.includes("yellow yellow yellow yellow")) {
     return "yellow";
   }
   return null;
@@ -132,8 +132,18 @@ const checkForWinner = (red, yellow) => {
 //Horizontal
 const horizontalChecking = () => {
   board.forEach((rowArr) => {
-    const red = rowArr.filter((row) => row === "red");
-    const yellow = rowArr.filter((row) => row === "yellow");
+    const red = rowArr
+      .map((row) => {
+        if (row === null) return "null";
+        if (row === "red") return "red";
+      })
+      .join(" ");
+    const yellow = rowArr
+      .filter((row) => {
+        if (row === null) return "null";
+        if (row === "yellow") return "yellow";
+      })
+      .join(" ");
     if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
   });
   return winner;
@@ -153,8 +163,18 @@ const verticalChecking = () => {
       board[4][i],
       board[5][i],
     ];
-    const red = columnArr.filter((col) => col === "red");
-    const yellow = columnArr.filter((col) => col === "yellow");
+    const red = columnArr
+      .map((row) => {
+        if (row === null) return "null";
+        if (row === "red") return "red";
+      })
+      .join(" ");
+    const yellow = columnArr
+      .filter((row) => {
+        if (row === null) return "null";
+        if (row === "yellow") return "yellow";
+      })
+      .join(" ");
     if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
   });
   return winner;
