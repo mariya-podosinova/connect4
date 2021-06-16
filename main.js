@@ -192,8 +192,18 @@ const diagonalChecking = () => {
         board[1][Math.abs(i - 1)],
         board[0][5 - j],
       ];
-      let red = diagonalArr.filter((col) => col === "red");
-      let yellow = diagonalArr.filter((col) => col === "yellow");
+      let red = diagonalArr
+        .map((row) => {
+          if (row === null) return "null";
+          if (row === "red") return "red";
+        })
+        .join(" ");
+      let yellow = diagonalArr
+        .map((row) => {
+          if (row === null) return "null";
+          if (row === "red") return "red";
+        })
+        .join(" ");
       if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
     }
   });
@@ -245,6 +255,7 @@ const diagonalChecking = () => {
   red = diagonalArr.filter((col) => col === "red");
   yellow = diagonalArr.filter((col) => col === "yellow");
   if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
+  return winner;
 };
 
 //Helper for stop click
