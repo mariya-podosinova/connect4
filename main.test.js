@@ -1,6 +1,21 @@
 const academyModule = require("./main");
 
 //Test pure functions
+describe("when we calling the board it returns the board", () => {
+  test("it returns empty board", () => {
+    const actual = academyModule.getBoard();
+    const expected = [
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+    ];
+    expect(actual).toEqual(expected);
+  });
+});
+
 //Test non-pure functions
 
 describe("when we calling the horizontalChecking function", () => {

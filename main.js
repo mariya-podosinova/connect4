@@ -201,7 +201,7 @@ const diagonalChecking = () => {
       let yellow = diagonalArr
         .map((row) => {
           if (row === null) return "null";
-          if (row === "red") return "red";
+          if (row === "yellow") return "yellow";
         })
         .join(" ");
       if (checkForWinner(red, yellow)) winner = checkForWinner(red, yellow);
